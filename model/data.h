@@ -36,6 +36,7 @@ struct Profile
 
     Level level;
     Category type;
+    Habits habit;
 };
 
 struct UserRegistry
