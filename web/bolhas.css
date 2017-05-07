@@ -8,7 +8,7 @@ z-index: 1;
 }
 #dota{
 background-image: url(bdota.png);
-left: 35%;
+left: 33%;
 top: 30%;
 }
 #got{
@@ -18,9 +18,28 @@ top: 50%;
 }
 #sw{
 background-image: url(bsw.png);
-left: 60%;
+left: 62%;
 top: 40%;
 }
+
+#dota_selecionada{
+background-image: url(bdota.png);
+left: 43%;
+top: 30%;
+}
+#got_selecionada{
+background-image: url(bgot.png);
+left: 38%;
+top: 50%;
+}
+#sw_selecionada{
+background-image: url(bsw.png);
+left: 54%;
+top: 40%;
+}
+
+
+
 .circulo{
 background-image: url(circcent.png);
 background-repeat: no-repeat;
@@ -30,4 +49,5 @@ width: 80%;
 height:80%;
 margin: auto;
 margin-top: 0;
+    
 }

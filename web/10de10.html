@@ -1,3 +1,4 @@
+
 <html>
        <head>
 	   <title>Adote um calouro</title>
@@ -6,17 +7,29 @@
 	   <style type = "text/css">
 	   </style>
 	   <body>
+    <form id="myForm" action="Tela3.html" method="post">
 	   <div class = "box">
 	   <h1>Adote um calouro</h1>
-	   <p class="label">Email:</p>
-	   <p class="label">Senha:</p>
+	   <p class="label">Email: <input type="text" name="txtEmail" required></p>
+	   <p class="label">Senha: <input type="password" name="txtSenha" required></p>
 	   <div class="center">
-		  <small>É novo aqui? <a>Cadastre-se<br></a></small>
+		  <small>É novo aqui? <a href ="cadastro.html">Cadastre-se<br></a></small>
 		  <small>Reportar um problema<br></small>
 		  <small>Esqueci minha senha</small>
 	  </div>
 		<br><br><br><br><br><br>
-	  <div class = "button submit" title = "Entrar">Entrar</div>
-	   </div>
+	  <div class = "button submit" onclick="myFunction()" title = "Entrar">Entrar</div>
+    	   </div>
+        
+    </form>
+               
+<script>
+function myFunction() {
+                 document.getElementById("myForm").submit();
+         
+ }
+</script>
 	  </body>
+
+    
 </html>

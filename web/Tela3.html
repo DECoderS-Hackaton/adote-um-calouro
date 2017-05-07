@@ -1,16 +1,36 @@
 <html>
 <head>
+<script>
+function seleciona(ev) {
+var str1 = ev;
+var str2 = "_selecionada";
+var res; 
+
+ if (res == "got_selecionada") {
+   res = "got";
+} 
+else {
+   res = str1.concat(str2); 
+} 
+
+document.getElementById(ev).id = res;
+
+    alert = (ev);
+   
+}
+</script>
 <title>Adote um calouro</title>
 <link rel="stylesheet" type="text/css" href="utils.css"/>
 <link rel="stylesheet" type="text/css" href="bolhas.css"/>
 </head>	
 <body>
 <div class = "box no-background">
-<div class = "bolha" id = "dota" title = "Dota">
+<div class = "bolha" id = "dota"  title = "Dota" onclick="seleciona('dota');">
+    
 </div>
-<div class = "bolha" id = "sw" title ="Star wars">
+<div class = "bolha" id = "sw" title ="Star wars"  onclick="seleciona('sw')">
 </div>
-<div class = "bolha" id = "got" title = "Game of thrones">
+<div class = "bolha" id = "got" title = "Game of thrones" onclick="seleciona('got')">
 </div>
 <h1 class="high-contrast" >Defina seus gostos</h1>
 <div class = "circulo">

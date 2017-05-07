@@ -2,21 +2,59 @@
 <head>
 <title>Adote um calouro</title>
 <link rel="stylesheet" type="text/css" href="utils.css"/>
+    <script>
+    
+  
+
+  var email = string;
+  email = document.getElementsByName("txtEmail").value;
+  alert(email);
+         
+function myFunction() {
+                 document.getElementById("myForm").submit();
+         
+ }
+</script>
 </head>
 <body>
+
+    
+      <form id="myForm" action="Tela3.html" method="post">
 <div class = "box large-box">
 	<h1>Participe de uma adoção universitaria</h1>
 	<img src = "byt.png" title = "linkar youtube">
 	<img src = "bgog.png" title = "linkar google mais">
 	<img src = "bface.png" title = "linkar facebook">
-	<p class="label">Nome:</p>
-	<p class="label">Email:</p>
-	<p class="label">Curso:</p>
-	<p class="label">Periodo:</p>
-	<div class =  "button submit" title = "Salvar">
+	<p class="label">Nome: <input type="text" name="txtNome" required></p>
+	<p class="label">Email: <input type="text" name="txtEmail" required></p>
+	<p class="label">Curso:     
+    <select>
+        <option value="">Selecione</option>
+        <option value="1">Arquivologia</option>
+        <option value="2">Bibliotecomia</option>
+        <option value="3">Ciência da Computação</option>
+    </select>
+    </p>
+	<p class="label">Periodo:  
+    <select>
+        <option value="">Selecione</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+    </p>
+	<div class =  "button submit" onclick="myFunction()" title = "Salvar">
 	Salvar
 	</div>
 </div>
+</form>
 
 </body>
 </html>
