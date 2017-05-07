@@ -2,6 +2,8 @@
 
 Sistema que visa amenizar o problema da evasão de alunos do ensino superior.
 
+Iniciativa incentivada durante a *Hack@UNIRIO*.
+
 # Purpose
 
 
