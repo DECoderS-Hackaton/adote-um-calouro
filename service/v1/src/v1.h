@@ -17,43 +17,43 @@ public:
     /*! Login and take a token. */
     // *method: POST
     // *location: login/{username}/{password}
-    std::string Login(const string& username, const string& pasword);
+    int Login(const string& username, const string& pasword);
 
     //! Subscribe
     /*! Subscribe on system. */
     // *method: POST
     // *location: profile
-    std::string Subscribe(const UserRegistry &registy, int token);
+    int Subscribe(UserRegistry registy);
 
     //! Choose recreation
     /*! Update the recreation intrests. */
     // *method: PUT
     // *location: recreations
-    std::string ChooseRecreation(const list<string> & choices, int token);
+    void ChooseRecreation(const list<wstring> & choices, int token);
 
     //! Choose enterteinment
     /*! Update the entertainment intrests. */
     // *method: PUT
     // *location: entertainments
-    std::string ChooseEntertainment(const list<string> & choices, int token);
+    void ChooseEntertainment(const list<wstring> & choices, int token);
 
     //! Choose disciplines
     /*! Update the discipline intrests. */
     // *method: PUT
     // *location: disciplines
-    std::string ChooseDisciplines(const list<string> & choices, int token);
+    void ChooseDisciplines(const list<wstring> & choices, int token);
 
     //! Edit profile
     /*! Update the profile. */
     // *method: PUT
     // *location: profile
-    std::string UpdateProfile(const Profile & profile, int token);
+    void UpdateProfile(const Profile & profile, int token);
 
     //! Get a profile
     /*! Get profile information. */
     // *method: GET
     // *location: profile
-    service::Profile GetProfile(const std::string & username, int token); 
+    service::Profile GetProfile(int token); 
 
     //! Get a veterans
     /*! Get veterans information sorted by matching with freshman profile. */
@@ -82,7 +82,7 @@ public:
     /*! Request veteran adoption. */
     // *method: POST
     // *location: adoption
-    bool BugReport(const Report & report, int token);
+    bool BugReport(const Report & report);
 
 };
 
