@@ -32,10 +32,12 @@ struct Profile
     wstring field;
     string telephone;
     string avatar;
+    int semester;
     SocialMedia user_medias;
 
     Level level;
     Category type;
+    Habits habit;
 };
 
 struct UserRegistry
@@ -51,7 +53,8 @@ struct Adoption {
   Profile freshman;
 };
 
-list<UserRegistry> users;
+list<UserRegistry> users_veterans;
+list<UserRegistry> users_freshmans;
 list<Adoption> adoptions, adoption_requests_by_freshman, adoption_request_by_veteran;
 int token=0;
 

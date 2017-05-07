@@ -4,12 +4,12 @@
 
 using namespace adopt_a_freshman;
 
-int v1::Login(const string& username, const string& pasword) {
+int v1::Login(const string& username, const string& password) {
     list<UserRegistry>::iterator regis;
-    regis=find_if(users_freshmans.begin(),users_freshmans.end(),[username](UserRegistry registry){return registry.username==username});
+    regis=find_if(users_freshmans.begin(),users_freshmans.end(),[username](UserRegistry registry){return registry.username==username;});
     if(regis==users_freshmans.end())
     {
-        regis=find_if(users_veterans.begin(),users_veterans.end(),[username](UserRegistry registry){return registry.username==username});
+        regis=find_if(users_veterans.begin(),users_veterans.end(),[username](UserRegistry registry){return registry.username==username;});
         if(regis==users_veterans.end())
             return -1;
     }
@@ -19,20 +19,18 @@ int v1::Login(const string& username, const string& pasword) {
         return -1;
 }
 
-int v1::Subscribe(UserRegistry registy) {
-  if(registry.password<6)
+int v1::Subscribe(UserRegistry registry) {
+  if(registry.password.length() < 6)
     return -1;
   if(registry.profile.semester<1)
     return -2;
   registry.token=token++;
-  if(registry.profile.semester<3)
-  { 
-    users_freshmans.profile.user_status="Calouro";
+  if(registry.profile.semester<3) { 
+    registry.profile.type = Category::FRESHMAN;
     users_freshmans.push_back(registry);
   }
-  if(registry.profile.semester>=3)
-  {
-    users_veterans.profile.user_status="Veterano";
+  if(registry.profile.semester>=3) {
+    registry.profile.type = Category::VETERAN;
     users_veterans.push_back(registry);
   }
   return registry.token;
@@ -54,24 +52,20 @@ void v1::ChooseDisciplines(const list<wstring> & choices, int token) {
 }
 
 void v1::UpdateProfile(const Profile & profile, int token) {
-    GetProfile(token) = profile;
+    this->GetProfile(token) = profile;
 }
 
-const UserRegistry& v1::GetProfile(int token) const {
-    return GetProfile(token);
-}
-
-service::Profile& v1::GetProfile(int token) {
+Profile& v1::GetProfile(int token) {
   list<UserRegistry>::iterator gigaregis;
-  gigaregis=find_if(users_freshmans.begin(),users_freshmans.end(),[token](UserRegistry registoken){return registoken.token==token});
-  if(regis==users_freshmans.end())
-    gigaregis=find_if(users_veterans.begin(),users_veterans.end(),[token](UserRegistry registoken){return registoken.token==token});
+  gigaregis=find_if(users_freshmans.begin(),users_freshmans.end(),[token](UserRegistry registoken){return registoken.token==token;});
+  if(gigaregis==users_freshmans.end())
+    gigaregis=find_if(users_veterans.begin(),users_veterans.end(),[token](UserRegistry registoken){return registoken.token==token;});
   return gigaregis->profile;
 }
 
 list<Profile> v1::GetVeterans(int token) {
   // TODO XXX implements
-  reutrn {};
+  return {};
 }
 
 bool v1::AdoptFreshmanRequest(const string & username, int token) {
@@ -99,6 +93,10 @@ bool v1::AddAdoptionRequest(const std::string & username, int token) {
 }
 
 bool v1::ConfirmeAdoption(const std::string & username, int token) {
+  Adoption adoption;
+  Profile profile_a = this->GetProfile(username),
+         profile_b = this->GetProfile(token);
+
   list<Adoption>::iterator adoption_iterator;
 
   const Profile & profile = this->GetProfile(token);
@@ -106,15 +104,15 @@ bool v1::ConfirmeAdoption(const std::string & username, int token) {
     adoption_iterator = std::find_if(adoption_request_by_veteran.begin(),
         adoption_request_by_veteran.end(), 
         [username] (const Adoption & adoption) {
-          return adoption.veteran.username == username 
-          && profile.freshman.username == profile.username;
+          return adoption.veteran.name == profile_a.username
+          && adoption.freshman.username == profileb.username
         });
   else
     adoption_iterator = std::find_if(adoption_request_by_veteran.begin(),
         adoption_request_by_freshman.end(), 
         [username] (const Adoption & adoption) {
-          return adoption.freshman.username == username 
-          && profile.veteran.username == profile.username;
+          return adoption.veteran.name == profile_b.username
+          && adoption.freshman.username == profile_a.username
         });
 
   // TODO Reject adoption request because of veteran inability.

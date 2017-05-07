@@ -53,7 +53,7 @@ public:
     /*! Get profile information. */
     // *method: GET
     // *location: profile
-    service::Profile GetProfile(int token); 
+    Profile& GetProfile(int token); 
 
     //! Get a veterans
     /*! Get veterans information sorted by matching with freshman profile. */
